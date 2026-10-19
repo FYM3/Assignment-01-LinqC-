@@ -10,16 +10,23 @@ namespace Assignment_01_LinqC_
 
             #region Q1
 
-            var AllProducts = Source.ProductList
-                             .Where(N => N.Category == "Seafood")
-                             .Select(X => new { X.ProductName, X.UnitPrice });
+            //var AllProducts = Source.ProductList
+            //                 .Where(N => N.Category == "Seafood")
+            //                 .Select(X => new { X.ProductName, X.UnitPrice });
 
-            foreach (var product in AllProducts)
-                Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}");
+            //foreach (var product in AllProducts)
+            //    Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}");
 
             #endregion
 
+            #region Q2
 
+            var ProductName = Source.ProductList.Select(X => X.ProductName);
+
+            foreach (var product in ProductName)
+                Console.WriteLine($"Product Name: {product}");
+
+            #endregion
 
         }
     }
