@@ -95,17 +95,28 @@ namespace Assignment_01_LinqC_
 
             #region Q9
 
-            var ProductList = Source.ProductList
-                           .Where(X => X.Category == "Beverages")
-                           .OrderByDescending(X => X.UnitsInStock)
-                           .Select(X => new { X.ProductName, X.Category, X.UnitsInStock });
+            //var ProductList = Source.ProductList
+            //               .Where(X => X.Category == "Beverages")
+            //               .OrderByDescending(X => X.UnitsInStock)
+            //               .Select(X => new { X.ProductName, X.Category, X.UnitsInStock });
 
 
-            foreach (var product in ProductList)
-                Console.WriteLine($"Product Name: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
+            //foreach (var product in ProductList)
+            //    Console.WriteLine($"Product Name: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
 
             #endregion
 
+            #region Q10
+
+            var Orders = from customer in Source.CustomerList
+                         from order in customer.Orders
+                         where order.OrderDate.Year >= 1997
+                         select new { customer.CustomerID, order.OrderDate };
+
+            foreach (var order in Orders)
+                Console.WriteLine($"Customer ID: {order.CustomerID}, Order Date: {order.OrderDate}");
+
+            #endregion
         }
     }
 }
