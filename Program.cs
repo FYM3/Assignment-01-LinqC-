@@ -30,11 +30,22 @@ namespace Assignment_01_LinqC_
 
             #region Q3
 
-            var Sortallproducts = Source.ProductList
-                                .OrderBy(X => X.UnitPrice)
+            //var Sortallproducts = Source.ProductList
+            //                    .OrderBy(X => X.UnitPrice)
+            //                    .Select(X => new { X.ProductName, X.UnitPrice });
+
+            //foreach (var product in Sortallproducts)
+            //    Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}");
+
+            #endregion
+
+            #region Q4
+
+            var Productsbetween = Source.ProductList
+                                .Where(X => X.UnitPrice >= 10 && X.UnitPrice <= 30)
                                 .Select(X => new { X.ProductName, X.UnitPrice });
 
-            foreach (var product in Sortallproducts)
+            foreach (var product in Productsbetween)
                 Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}");
 
             #endregion
