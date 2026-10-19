@@ -52,12 +52,22 @@ namespace Assignment_01_LinqC_
 
             #region Q5
 
-            var Allproducts = Source.ProductList
-                           .Where(X => X.UnitsInStock > 0 && X.Category == "Condiments")
-                           .Select(X => new { X.ProductName, X.UnitsInStock, X.Category });
+            //var Allproducts = Source.ProductList
+            //               .Where(X => X.UnitsInStock > 0 && X.Category == "Condiments")
+            //               .Select(X => new { X.ProductName, X.UnitsInStock, X.Category });
 
-            foreach (var product in Allproducts)
-                Console.WriteLine($"Product Name: {product.ProductName}, Units In Stock: {product.UnitsInStock}, Category: {product.Category}");
+            //foreach (var product in Allproducts)
+            //    Console.WriteLine($"Product Name: {product.ProductName}, Units In Stock: {product.UnitsInStock}, Category: {product.Category}");
+
+            #endregion
+
+            #region Q6
+
+            var anonymous = Source.ProductList
+                       .Select(X => new { X.ProductName, X.UnitPrice , StockStatus = (X.UnitsInStock > 0) ? "Available" : "Out of Stock" });
+
+            foreach (var product in anonymous)
+                Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}, Stock Status: {product.StockStatus}");
 
             #endregion
         }
