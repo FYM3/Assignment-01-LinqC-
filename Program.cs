@@ -130,13 +130,27 @@ namespace Assignment_01_LinqC_
 
             #region Q12
 
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+
+            //var SortedWords = Arr
+            //    .OrderBy(X => X.Length)
+            //    .ThenBy(X => X, StringComparer.OrdinalIgnoreCase);
+
+            //foreach (var word in SortedWords)
+            //    Console.WriteLine(word);
+
+            #endregion
+
+            #region Q13
+
             string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            var SortedWords = Arr
-                .OrderBy(X => X.Length)
-                .ThenBy(X => X, StringComparer.OrdinalIgnoreCase);
+            var Result = Arr
+                .Where(X => X.Length > 1 && char.ToLowerInvariant(X[1]) == 'i')
+                .Reverse()
+                .ToList();
 
-            foreach (var word in SortedWords)
+            foreach (var word in Result)
                 Console.WriteLine(word);
 
             #endregion
