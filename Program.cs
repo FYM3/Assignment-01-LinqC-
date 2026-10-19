@@ -73,13 +73,26 @@ namespace Assignment_01_LinqC_
 
             #region Q7
 
-            var ProductName = Source.ProductList
-                .Select((X,Index) => new { X.ProductName, Position = Index + 1 });
+            //var ProductName = Source.ProductList
+            //    .Select((X,Index) => new { X.ProductName, Position = Index + 1 });
 
-            foreach (var product in ProductName)
-                Console.WriteLine($"Product Name: {product.ProductName}, Position: {product.Position}");
+            //foreach (var product in ProductName)
+            //    Console.WriteLine($"Product Name: {product.ProductName}, Position: {product.Position}");
 
             #endregion
+
+            #region Q8
+
+            var ProductList = Source.ProductList
+                           .OrderBy(X => X.Category)
+                           .ThenByDescending(X => X.UnitPrice)
+                           .Select(X => new { X.ProductName, X.UnitPrice, X.Category });
+
+            foreach (var product in ProductList)
+                Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}, Category: {product.Category}");
+
+            #endregion
+
         }
     }
 }
