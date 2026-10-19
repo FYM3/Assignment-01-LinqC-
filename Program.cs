@@ -83,13 +83,26 @@ namespace Assignment_01_LinqC_
 
             #region Q8
 
+            //var ProductList = Source.ProductList
+            //               .OrderBy(X => X.Category)
+            //               .ThenByDescending(X => X.UnitPrice)
+            //               .Select(X => new { X.ProductName, X.UnitPrice, X.Category });
+
+            //foreach (var product in ProductList)
+            //    Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}, Category: {product.Category}");
+
+            #endregion
+
+            #region Q9
+
             var ProductList = Source.ProductList
-                           .OrderBy(X => X.Category)
-                           .ThenByDescending(X => X.UnitPrice)
-                           .Select(X => new { X.ProductName, X.UnitPrice, X.Category });
+                           .Where(X => X.Category == "Beverages")
+                           .OrderByDescending(X => X.UnitsInStock)
+                           .Select(X => new { X.ProductName, X.Category, X.UnitsInStock });
+
 
             foreach (var product in ProductList)
-                Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}, Category: {product.Category}");
+                Console.WriteLine($"Product Name: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
 
             #endregion
 
