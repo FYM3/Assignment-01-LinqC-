@@ -41,12 +41,23 @@ namespace Assignment_01_LinqC_
 
             #region Q4
 
-            var Productsbetween = Source.ProductList
-                                .Where(X => X.UnitPrice >= 10 && X.UnitPrice <= 30)
-                                .Select(X => new { X.ProductName, X.UnitPrice });
+            //var Productsbetween = Source.ProductList
+            //                    .Where(X => X.UnitPrice >= 10 && X.UnitPrice <= 30)
+            //                    .Select(X => new { X.ProductName, X.UnitPrice });
 
-            foreach (var product in Productsbetween)
-                Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}");
+            //foreach (var product in Productsbetween)
+            //    Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}");
+
+            #endregion
+
+            #region Q5
+
+            var Allproducts = Source.ProductList
+                           .Where(X => X.UnitsInStock > 0 && X.Category == "Condiments")
+                           .Select(X => new { X.ProductName, X.UnitsInStock, X.Category });
+
+            foreach (var product in Allproducts)
+                Console.WriteLine($"Product Name: {product.ProductName}, Units In Stock: {product.UnitsInStock}, Category: {product.Category}");
 
             #endregion
         }
