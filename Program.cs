@@ -120,11 +120,24 @@ namespace Assignment_01_LinqC_
 
             #region Q11
 
-            var Products = Source.ProductList
-                .Select((X, Index) => new { Position = Index + 1, X.ProductName });
+            //var Products = Source.ProductList
+            //    .Select((X, Index) => new { Position = Index + 1, X.ProductName });
 
-            foreach (var product in Products)
-                Console.WriteLine($"{product.Position}. {product.ProductName}");
+            //foreach (var product in Products)
+            //    Console.WriteLine($"{product.Position}. {product.ProductName}");
+
+            #endregion
+
+            #region Q12
+
+            string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+
+            var SortedWords = Arr
+                .OrderBy(X => X.Length)
+                .ThenBy(X => X, StringComparer.OrdinalIgnoreCase);
+
+            foreach (var word in SortedWords)
+                Console.WriteLine(word);
 
             #endregion
         }
