@@ -21,13 +21,23 @@ namespace Assignment_01_LinqC_
 
             #region Q2
 
-            var ProductName = Source.ProductList.Select(X => X.ProductName);
+            //var ProductName = Source.ProductList.Select(X => X.ProductName);
 
-            foreach (var product in ProductName)
-                Console.WriteLine($"Product Name: {product}");
+            //foreach (var product in ProductName)
+            //    Console.WriteLine($"Product Name: {product}");
 
             #endregion
 
+            #region Q3
+
+            var Sortallproducts = Source.ProductList
+                                .OrderBy(X => X.UnitPrice)
+                                .Select(X => new { X.ProductName, X.UnitPrice });
+
+            foreach (var product in Sortallproducts)
+                Console.WriteLine($"Product Name: {product.ProductName}, Unit Price: {product.UnitPrice}");
+
+            #endregion
         }
     }
 }
