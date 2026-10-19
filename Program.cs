@@ -108,13 +108,23 @@ namespace Assignment_01_LinqC_
 
             #region Q10
 
-            var Orders = from customer in Source.CustomerList
-                         from order in customer.Orders
-                         where order.OrderDate.Year >= 1997
-                         select new { customer.CustomerID, order.OrderDate };
+            //var Orders = from customer in Source.CustomerList
+            //             from order in customer.Orders
+            //             where order.OrderDate.Year >= 1997
+            //             select new { customer.CustomerID, order.OrderDate };
 
-            foreach (var order in Orders)
-                Console.WriteLine($"Customer ID: {order.CustomerID}, Order Date: {order.OrderDate}");
+            //foreach (var order in Orders)
+            //    Console.WriteLine($"Customer ID: {order.CustomerID}, Order Date: {order.OrderDate}");
+
+            #endregion
+
+            #region Q11
+
+            var Products = Source.ProductList
+                .Select((X, Index) => new { Position = Index + 1, X.ProductName });
+
+            foreach (var product in Products)
+                Console.WriteLine($"{product.Position}. {product.ProductName}");
 
             #endregion
         }
